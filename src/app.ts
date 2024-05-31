@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import cors from "cors";
 import LoginRoutes from './routes/LoginRoute'
 import RegisterRoute from './routes/RegRoute';
