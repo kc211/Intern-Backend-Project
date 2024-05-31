@@ -1,0 +1,31 @@
+{
+  "name": "booking-system-backend",
+  "version": "1.0.0",
+  "description": "backend files for booking system project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon app.js",
+    "build": "tsc",
+    "start": "nodemon --exec ts-node src/app.ts"
+  },
+  "author": "kranti",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.13",
+    "nodemon": "^3.1.1"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "knex": "^3.1.0",
+    "mysql2": "^3.9.8",
+    "typescript": "^5.4.5"
+  }
+}
