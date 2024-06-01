@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
-import db from "../dbconfig/db.config";
+import db from "../dbconfig/dbconfig";
 
 const Register = async (req: Request, res: Response) => {
   const { name, email, password_, confirm_password, Phone_number } = req.body;

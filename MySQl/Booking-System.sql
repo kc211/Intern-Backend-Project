@@ -73,4 +73,14 @@ insert into Theatres values(1,"AAA Cinemas","Ameerpet","Hyd"),
 ;
 
 select * from Theatres;
+select * from Movies;
+
+alter table Movies add column (src varchar(70));
+alter table Movies modify src varchar(255);
+desc Movies;
+
+update Movies set src ="image1.png" where name="The Garifield Movie";
+update Movies set src= ("image2.png") where name="Kingdom of the Planet of the Apes";
+update Movies set src=("image3.png") where name ="Srikanth";
+update Movies set src= ("image4.png") where name = "Furiosa: A Mad Max saga";
 

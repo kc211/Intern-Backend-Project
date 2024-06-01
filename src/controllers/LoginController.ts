@@ -1,6 +1,6 @@
-import   { Request, Response} from "express";
+import  { Request, Response} from "express";
 import bcrypt from "bcrypt";
-import db from '../dbconfig/db.config';
+import db from '../dbconfig/dbconfig';
 
 const Login= async (req: Request, res: Response) => {
     const { email, password } = req.body;
