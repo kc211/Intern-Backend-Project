@@ -1,4 +1,4 @@
-import express,{ Express,Response,Request } from "express";
+import express from "express";
 import Register from "../controllers/RegController";
 
 const router = express.Router();

@@ -84,3 +84,46 @@ update Movies set src= ("image2.png") where name="Kingdom of the Planet of the A
 update Movies set src=("image3.png") where name ="Srikanth";
 update Movies set src= ("image4.png") where name = "Furiosa: A Mad Max saga";
 
+
+create table Timings (id int primary key , show_timing varchar(20));
+
+insert into  Timings values (1,"11:00 AM"),(2,"2:30 PM"),(3,"6:30 PM"),(4,"10:00 PM"); 
+
+update Movies set name= ("The Garfield Movie") where id =1;
+
+
+create table movie_theatre (
+id integer primary key auto_increment,
+movie_id int,
+theatre_id int,
+foreign key (theatre_id) references Theatres(id),
+foreign key(movie_id) references Movies(id)
+ );
+ 
+ 
+ insert into movie_theatre (movie_id,theatre_id)values
+ (1,1),
+ (1,2),
+ (1,4),
+ (1,9),
+ (1,10),
+ (2,2),
+ (2,4),
+ (2,5),
+ (2,6),
+ (2,10),
+ (3,1),
+ (3,3),
+ (3,5),
+ (3,7),
+ (3,8),
+ (4,2),
+ (4,1),
+ (4,3),
+ (4,4),
+ (4,5)
+;
+ 
+ select t1.movie_id, t1.theatre_id,t2.* from Theatres t2 inner join movie_theatre t1 on t2.id=  t1.theatre_id where t1.movie_id =1;
+ 
+ drop table movie_theatre;
