@@ -23,9 +23,10 @@ const MovieModel = {
 };
 
 export const getmovies = async (req: Request, res: Response) => {
+    console.log("in getmovies after middleware" + req)
     try {
         const movies = await MovieModel.getAllMovies();
-        console.log(movies);
+        // console.log(movies);
         res.json(movies);
     } catch (error) {
         res.status(500).json({ error: "Failed to fetch movies" });
