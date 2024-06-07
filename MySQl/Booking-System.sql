@@ -127,3 +127,8 @@ foreign key(movie_id) references Movies(id)
  select t1.movie_id, t1.theatre_id,t2.* from Theatres t2 inner join movie_theatre t1 on t2.id=  t1.theatre_id where t1.movie_id =1;
  
  drop table movie_theatre;
+ 
+ 
+ create table refreshToken (id int primary key auto_increment, r_token varchar(255), date_ date);
+ 
+ 

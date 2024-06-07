@@ -1,8 +1,7 @@
-import express,{Express, Request, Response} from 'express';
+import express from "express";
 import { getmovies } from "../controllers/HomeController";
 const router = express.Router();
 
-
-router.get("/",getmovies);
+router.get("/", getmovies);
 
 export default router;

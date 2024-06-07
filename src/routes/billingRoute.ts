@@ -1,16 +1,9 @@
-// routes/protectedRoute.js
-import express,{Request,Response} from 'express';
-import verifyToken from '../middleware/middleware';
+import express from "express";
+import { verifyAccessToken } from "../middleware/jwtHelper";
+import { getBill } from "../controllers/billingController";
 
 const router = express.Router();
 
-// Extend the Request interface to include the userId property
-interface AuthenticatedRequest extends Request {
-    userId?: string;
-  }
-
-router.get('/shows/seats/:id/billing/:id', verifyToken, (req:AuthenticatedRequest, res) => {
-  res.json({ message: 'This is a protected route', userId: req.userId  });
-});
+router.get("/billing/:id", verifyAccessToken, getBill);
 
 export default router;
