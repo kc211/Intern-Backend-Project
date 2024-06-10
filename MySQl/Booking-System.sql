@@ -130,5 +130,7 @@ foreign key(movie_id) references Movies(id)
  
  
  create table refreshToken (id int primary key auto_increment, r_token varchar(255), date_ date);
+ truncate table refreshToken;
+ select* from refreshToken;
  
  

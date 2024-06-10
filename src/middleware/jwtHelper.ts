@@ -47,8 +47,8 @@ console.log("verifying the protected route");
           },
         });
       }
+      res.locals.u_email = decoded.email;
       next();
-      return (res.locals.userId = decoded.email);
     }
   );
 };
