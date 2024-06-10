@@ -2,8 +2,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import moment from "moment";
-import db from "../dbconfig/dbconfig";
 
 dotenv.config();
 
@@ -18,7 +16,7 @@ export const verifyAccessToken = (
   next: NextFunction
 ): Response | void => {
   const token: string | undefined = req.headers["authorization"];
-
+console.log("verifying the protected route");
   if (!token) {
     return res.status(401).json({
       error: {
@@ -75,7 +73,7 @@ export const verifyRefreshToken = async (
   next: NextFunction
 ): Promise<void | Response<any, Record<string, any>>> => {
   const { refreshToken } = req.body;
-  // const token: string | undefined = req.headers["authorization"];
+  console.log("verifying refresh token");
   console.log(refreshToken);
   if (!refreshToken) return res.status(401).json("unauthorised mannnnn");
   jwt.verify(
