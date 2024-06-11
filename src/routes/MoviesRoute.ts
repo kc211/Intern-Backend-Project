@@ -3,4 +3,4 @@ import { getMovieandTheatre } from "../controllers/MovieController";
 
 const router = express.Router();
 
- export default router.get("/shows/:id",getMovieandTheatre);
+ export default router.get("/shows/:id/:date",getMovieandTheatre);

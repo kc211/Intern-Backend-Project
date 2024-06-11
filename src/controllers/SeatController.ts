@@ -3,6 +3,7 @@ import db from "../dbconfig/dbconfig";
 
 export const getSeats = async (req: Request, res: Response) => {
   const id = req.params.id;
+  console.log(id);
   const Movie = await db("Movies").select("*").where({ id });
 
   try {
