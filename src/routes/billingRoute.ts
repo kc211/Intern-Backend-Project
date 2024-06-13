@@ -4,6 +4,6 @@ import { getBill } from "../controllers/billingController";
 
 const router = express.Router();
 
-router.get("/billing/:id", verifyAccessToken, getBill);
+router.post("/billing/:id/:theatre_name/:show_time/seats/:date/", verifyAccessToken, getBill);
 
 export default router;

@@ -94,3 +94,21 @@ export const verifyRefreshToken = async (
     });
   next();
 };
+
+export const formatDate = (dateStr: string) => {
+  console.log("in formatdate function",dateStr);
+  if (typeof dateStr !== "string") {
+      throw new Error("Invalid date format");
+    }
+  const year: string = dateStr.substring(1,5);
+  if (dateStr.length === 9) {
+    const month: string = dateStr.substring(5, 6);
+    const date_: string = dateStr.substring(6,8);
+    return `${year}-0${month}-${date_}`;
+  }
+  const month: string = dateStr.substring(5, 7);
+  const date_: string = dateStr.substring(7, 9);
+
+  console.log(`${year}-${month}-${date_}`);
+  return `${year}-${month}-${date_}`;
+};
