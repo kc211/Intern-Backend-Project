@@ -85,10 +85,10 @@ update Movies set src=("image3.png") where name ="Srikanth";
 update Movies set src= ("image4.png") where name = "Furiosa: A Mad Max saga";
 
 
-create table Timings (id int primary key , show_timing varchar(20));
-
+create table Timings (id int primary key , show_timing varchar(20)not null unique);
+drop table Timings;
 insert into  Timings values (1,"11:00 AM"),(2,"2:30 PM"),(3,"6:30 PM"),(4,"10:00 PM"); 
-
+-- alter table Timings modify show_timing varchar(15) not null unique;
 update Movies set name= ("The Garfield Movie") where id =1;
 
 
@@ -141,9 +141,12 @@ foreign key(movie_id) references Movies(id)
  foreign key (u_email) references registered_users(email),
  foreign key (theatre_name) references Theatres(name),
 foreign key(movie_id) references Movies(id),
-foreign key (show_timing) references Timing(show_timing)
+foreign key (show_timing) references Timings(show_timing)
  );
  
- drop table tickets;
+ drop table Billing_tickets;
+ select * from Billing_tickets;
+ 
+ select * from Timings;
  
  

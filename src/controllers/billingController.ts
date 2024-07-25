@@ -14,8 +14,6 @@ export const getBill = async (req: Request, res: Response) => {
     await db("Billing_tickets").select("selectedSeats").where({ u_email: email,movie_id:movie_id,theatre_name:theatre_name,show_timing:show_time,date_:date });
   
   const Movie=await db("Movies").select("name","rating").where({id:movie_id});
-  console.log(Movie)
-  // console.log(seats[1].selectedSeats)
   return res.json({
     message: "This is a protected route",
     email: res.locals.u_email,

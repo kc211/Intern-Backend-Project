@@ -16,7 +16,6 @@ export const verifyAccessToken = (
   next: NextFunction
 ): Response | void => {
   const token: string | undefined = req.headers["authorization"];
-console.log("verifying the protected route");
   if (!token) {
     return res.status(401).json({
       error: {
@@ -31,7 +30,6 @@ console.log("verifying the protected route");
     ACCESS_TOKEN_SECRET_KEY,
     (err, decoded): Response | void => {
       if (err) {
-        console.log(err);
         return res.status(401).json({
           error: {
             code: 401.01,
@@ -73,19 +71,15 @@ export const verifyRefreshToken = async (
   next: NextFunction
 ): Promise<void | Response<any, Record<string, any>>> => {
   const { refreshToken } = req.body;
-  console.log("verifying refresh token");
-  console.log(refreshToken);
   if (!refreshToken) return res.status(401).json("unauthorised mannnnn");
   jwt.verify(
     refreshToken,  
     REFRESH_TOKEN_SECRET_KEY,
     (err:any, decoded:any): Response | void => {
-      console.log(decoded);
       const payLoad=
       {
        email: decoded.email
       }
-      console.log(payLoad);
       if (err) return res.status(403).json({ "error:": err });
       const newAccessToken = generateAccessToken(payLoad);
       return res.json({
@@ -96,7 +90,6 @@ export const verifyRefreshToken = async (
 };
 
 export const formatDate = (dateStr: string) => {
-  console.log("in formatdate function",dateStr);
   if (typeof dateStr !== "string") {
       throw new Error("Invalid date format");
     }
@@ -106,9 +99,12 @@ export const formatDate = (dateStr: string) => {
     const date_: string = dateStr.substring(6,8);
     return `${year}-0${month}-${date_}`;
   }
+  if (dateStr.length === 8) {
+    const month: string = dateStr.substring(5, 6);
+    const date_: string = dateStr.substring(6,7);
+    return `${year}-0${month}-0${date_}`;
+  }
   const month: string = dateStr.substring(5, 7);
   const date_: string = dateStr.substring(7, 9);
-
-  console.log(`${year}-${month}-${date_}`);
   return `${year}-${month}-${date_}`;
 };
