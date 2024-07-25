@@ -76,6 +76,7 @@ INSERT INTO theatre_movie_mapping (show_time, movie_id, theatre_id) VALUES
 
 select * FROM movie where id=1;
 
-select t2.theatre_id,t2.movie_id from date_theatre_mapping t1 join theatre_movie_mapping t2 on t1.theatre_id = t2.theatre_id and movie_id = 1 and booking_date = DATE_ADD(CURDATE(), INTERVAL 2 DAY);
+select t2.theatre_id,t2.movie_id from date_theatre_mapping t1 join theatre_movie_mapping t2 on 
+t1.theatre_id = t2.theatre_id and movie_id = 1 and booking_date = DATE_ADD(CURDATE(), INTERVAL 2 DAY);
 
 
