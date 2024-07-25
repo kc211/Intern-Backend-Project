@@ -27,7 +27,7 @@ name varchar(50) NOT NULL,
 location char(255) NOT NULL,
 district varchar(30) NOT NULL);
 
-
+alter table Theatres modify name  varchar(65) not null unique;
 INSERT INTO Movies VALUES
 (1,'The Garifield Movie', "The new 'Garfield movie', set for release in 2024, is an animated film featuring Chris Pratt as the voice of Garfield and Samuel L. Jackson
  voicing a new character, Vic, who is Garfield's father. The movie is expected to follow the classic themes of Garfield's adventures and humorous antics,
@@ -85,10 +85,10 @@ update Movies set src=("image3.png") where name ="Srikanth";
 update Movies set src= ("image4.png") where name = "Furiosa: A Mad Max saga";
 
 
-create table Timings (id int primary key , show_timing varchar(20));
-
+create table Timings (id int primary key , show_timing varchar(20)not null unique);
+drop table Timings;
 insert into  Timings values (1,"11:00 AM"),(2,"2:30 PM"),(3,"6:30 PM"),(4,"10:00 PM"); 
-
+-- alter table Timings modify show_timing varchar(15) not null unique;
 update Movies set name= ("The Garfield Movie") where id =1;
 
 
@@ -127,3 +127,26 @@ foreign key(movie_id) references Movies(id)
  select t1.movie_id, t1.theatre_id,t2.* from Theatres t2 inner join movie_theatre t1 on t2.id=  t1.theatre_id where t1.movie_id =1;
  
  drop table movie_theatre;
+ 
+ 
+ create table refreshToken (id int primary key auto_increment, r_token varchar(255), date_ date);
+ truncate table refreshToken;
+ select* from refreshToken;
+ 
+ 
+ create table Billing_tickets(id int auto_increment primary key,u_email varchar(100) not null, 
+ movie_id int not null,selectedSeats varchar(20) not null, 
+ theatre_name varchar(255) not null
+ , show_timing varchar(20) not null,date_ date not null,
+ foreign key (u_email) references registered_users(email),
+ foreign key (theatre_name) references Theatres(name),
+foreign key(movie_id) references Movies(id),
+foreign key (show_timing) references Timings(show_timing)
+ );
+ 
+ drop table Billing_tickets;
+ select * from Billing_tickets;
+ 
+ select * from Timings;
+ 
+ 
