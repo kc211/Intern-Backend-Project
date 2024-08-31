@@ -9,14 +9,13 @@ import {
 const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
   try {
-    const data = await db("registered_users").select("*").where({
+    const data = await db("Registered_users").select("*").where({
       email: email,
     });
 
     if (data.length > 0) {
       const user = data[0];
       const isValidPassword = bcrypt.compareSync(password, user.password);
-      console.log(isValidPassword)
       if (isValidPassword) {
         const payload = {
           email: user.email,

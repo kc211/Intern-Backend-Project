@@ -12,7 +12,7 @@ const Register = async (req: Request, res: Response) => {
   } else {
     try {
       const password = await bcrypt.hash(password_, 12);
-      const data = await db("registered_users").insert({
+      const data = await db("Registered_users").insert({
         name,
         email,
         password,
